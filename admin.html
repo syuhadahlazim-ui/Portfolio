@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — bambam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tab-row { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+    .tab-btn {
+      background: transparent; border: 1px solid var(--border); color: var(--muted);
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 8px 16px; border-radius: 8px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(124,106,255,0.08); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+  </style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div class="lock-screen" id="lockScreen">
+  <div class="lock-card">
+    <div class="lock-icon">🔒</div>
+    <div class="lock-title">Admin Panel</div>
+    <div class="lock-sub">Masukkan password untuk masuk</div>
+    <div style="margin-top:20px;">
+      <input class="form-input" type="password" id="pwInput" placeholder="Password..." onkeydown="if(event.key==='Enter') checkPw()">
+      <button class="submit-btn" style="margin-top:10px;" onclick="checkPw()">Unlock</button>
+      <div id="pwError" style="color:var(--accent2);font-size:11px;margin-top:8px;display:none;">Password salah. Cuba lagi.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" style="display:none;">
+  <nav>
+    <a class="nav-logo" href="index.html">Admin Panel</a>
+    <div class="nav-right">
+      <a class="nav-link" href="index.html">← Balik ke website</a>
+      <button class="nav-link admin-logout" type="button" onclick="logoutAdmin()">Lock</button>
+      <div class="toggle-wrap" onclick="toggleTheme()">
+        <div class="toggle-track"><div class="toggle-thumb" id="thumb"></div></div>
+        <span class="toggle-lbl" id="tlbl">Dark</span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <div class="admin-title">Manage Content</div>
+      <div class="admin-sub">Urus projek, sijil, dan settings website kau.</div>
+    </div>
+    <div class="admin-stats" id="adminStats">
+      <div><span>Projects</span><strong id="statProjects">0</strong></div>
+      <div><span>Certificates</span><strong id="statCerts">0</strong></div>
+      <div><span>CV</span><strong id="statCV">Off</strong></div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tab-row">
+      <button class="tab-btn active" onclick="switchTab('projects', this)">📁 Projek</button>
+      <button class="tab-btn" onclick="switchTab('certs', this)">📜 Sijil</button>
+      <button class="tab-btn" onclick="switchTab('settings', this)">⚙️ Settings</button>
+    </div>
+
+    <!-- ── TAB: PROJECTS ── -->
+    <div class="tab-panel active" id="tab-projects">
+      <div class="section-label">Tambah Projek Baru</div>
+      <div class="form-card">
+        <input type="hidden" id="projEditId">
+        <div class="form-group">
+          <label class="form-label">Nama Projek *</label>
+          <input class="form-input" type="text" id="projName" placeholder="e.g. Water Availability System">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description BM *</label>
+          <textarea class="form-textarea" id="projDesc" placeholder="Terangkan projek dalam 2-3 ayat..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description EN <span style="color:var(--muted)">(optional)</span></label>
+          <textarea class="form-textarea" id="projDescEn" placeholder="Describe the project in 2-3 sentences..."></textarea>
+          <div class="form-hint">Kalau kosong, website akan guna Description BM untuk English juga.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description Panjang BM <span style="color:var(--muted)">(optional)</span></label>
+          <textarea class="form-textarea" id="projLongDesc" placeholder="Cerita lebih detail — cara buat, cabaran, apa yang dipelajari..." style="min-height:120px;"></textarea>
+          <div class="form-hint">Ini yang akan muncul dalam popup detail projek</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description Panjang EN <span style="color:var(--muted)">(optional)</span></label>
+          <textarea class="form-textarea" id="projLongDescEn" placeholder="Write the detailed English version here..." style="min-height:120px;"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Problem BM <span style="color:var(--muted)">(optional)</span></label>
+          <textarea class="form-textarea" id="projProblem" placeholder="Masalah atau keperluan yang projek ini cuba selesaikan..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Problem EN <span style="color:var(--muted)">(optional)</span></label>
+          <textarea class="form-textarea" id="projProblemEn" placeholder="The problem or need this project tries to solve..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Solution BM <span style="color:var(--muted)">(optional)</span></label>
+          <textarea class="form-textarea" id="projSolution" placeholder="Cara projek ini menyelesaikan masalah tersebut..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Solution EN <span style="color:var(--muted)">(optional)</span></label>
+          <textarea class="form-textarea" id="projSolutionEn" placeholder="How this project solves the problem..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Learning BM <span style="color:var(--muted)">(optional)</span></label>
+          <textarea class="form-textarea" id="projLearning" placeholder="Apa yang dipelajari semasa membina projek ini..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Learning EN <span style="color:var(--muted)">(optional)</span></label>
+          <textarea class="form-textarea" id="projLearningEn" placeholder="What you learned while building this project..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category *</label>
+          <select class="form-select" id="projCat">
+            <option value="web">Web</option>
+            <option value="ai">AI / Data</option>
+            <option value="iot">IoT</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tags</label>
+          <input class="form-input" type="text" id="projTags" placeholder="e.g. Python, Flask, MySQL">
+          <div class="form-hint">Asingkan dengan koma</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Demo Link</label>
+          <input class="form-input" type="url" id="projLink" placeholder="https://demo-link.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">GitHub Repo Link <span style="color:var(--muted)">(optional)</span></label>
+          <input class="form-input" type="url" id="projGithub" placeholder="https://github.com/...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Report / Slides Link <span style="color:var(--muted)">(optional)</span></label>
+          <input class="form-input" type="url" id="projReport" placeholder="https://drive.google.com/...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Architecture Flow <span style="color:var(--muted)">(optional)</span></label>
+          <input class="form-input" type="text" id="projArchitecture" placeholder="Sensor &gt; ESP32 &gt; Supabase &gt; Dashboard">
+          <div class="form-hint">Pisahkan step dengan simbol &gt; supaya website boleh lukis flow.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Project Status</label>
+          <select class="form-select" id="projStatus">
+            <option value="Completed">Completed</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Prototype">Prototype</option>
+            <option value="Research / Experiment">Research / Experiment</option>
+          </select>
+        </div>
+        <label class="check-row">
+          <input type="checkbox" id="projFeatured">
+          <span>Featured project</span>
+        </label>
+        <div class="form-group">
+          <label class="form-label">Gambar Utama</label>
+          <input class="form-input" type="url" id="projImg" placeholder="https://..." oninput="previewImage('projImg','projImgPreview')">
+          <div class="form-hint">Upload kat <a href="https://imgbb.com" target="_blank" style="color:var(--accent);">imgbb.com</a> → copy Direct link</div>
+          <img class="image-preview" id="projImgPreview" alt="Preview gambar projek" style="display:none;">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Gambar Tambahan <span style="color:var(--muted)">(optional)</span></label>
+          <input class="form-input" type="text" id="projImages" placeholder="https://link1.jpg, https://link2.jpg">
+          <div class="form-hint">Beberapa link gambar, asingkan dengan koma</div>
+        </div>
+        <div class="form-actions">
+          <button class="submit-btn" id="projSubmitBtn" onclick="saveProject()">＋ Tambah Projek</button>
+          <button class="submit-btn secondary-btn" id="projCancelBtn" onclick="resetProjectForm()" style="display:none;">Cancel Edit</button>
+          <a class="submit-btn secondary-btn preview-btn" href="index.html#projects" target="_blank">Preview</a>
+        </div>
+      </div>
+
+      <div class="section-label">Senarai Projek</div>
+      <div class="proj-list" id="projList"><div style="color:var(--muted);font-size:12px;">Loading...</div></div>
+    </div>
+
+    <!-- ── TAB: CERTIFICATES ── -->
+    <div class="tab-panel" id="tab-certs">
+      <div class="section-label">Tambah Sijil Baru</div>
+      <div class="form-card">
+        <input type="hidden" id="certEditId">
+        <div class="form-group">
+          <label class="form-label">Nama Sijil <span style="color:var(--muted)">(optional)</span></label>
+          <input class="form-input" type="text" id="certName" placeholder="e.g. Sijil Hackathon UKM 2024">
+          <div class="form-hint">Kosongkan je kalau tak nak letak nama</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kategori Sijil</label>
+          <select class="form-select" id="certCategory">
+            <option value="Academic">Academic</option>
+            <option value="Competition">Competition</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Scholarship">Scholarship</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Gambar Sijil *</label>
+          <input class="form-input" type="url" id="certImg" placeholder="https://..." oninput="previewImage('certImg','certImgPreview')">
+          <div class="form-hint">Upload kat <a href="https://imgbb.com" target="_blank" style="color:var(--accent);">imgbb.com</a> → copy Direct link</div>
+          <img class="image-preview" id="certImgPreview" alt="Preview gambar sijil" style="display:none;">
+        </div>
+        <div class="form-actions">
+          <button class="submit-btn" id="certSubmitBtn" onclick="saveCert()">＋ Tambah Sijil</button>
+          <button class="submit-btn secondary-btn" id="certCancelBtn" onclick="resetCertForm()" style="display:none;">Cancel Edit</button>
+          <a class="submit-btn secondary-btn preview-btn" href="index.html#achievements" target="_blank">Preview</a>
+        </div>
+      </div>
+
+      <div class="section-label">Senarai Sijil</div>
+      <div class="proj-list" id="certList"><div style="color:var(--muted);font-size:12px;">Loading...</div></div>
+    </div>
+
+    <!-- ── TAB: SETTINGS ── -->
+    <div class="tab-panel" id="tab-settings">
+      <div class="section-label">CV / Resume</div>
+      <div class="form-card">
+        <div style="margin-bottom:16px;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;margin-bottom:6px;">Download CV Button</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">
+            Bila kau letak link CV di sini, button "Download CV" akan <b style="color:var(--accent);">auto muncul</b> kat website. 
+            Kalau kosong, button akan <b style="color:var(--accent2);">tersembunyi</b> automatik.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Link CV (PDF)</label>
+          <input class="form-input" type="url" id="cvLink" placeholder="https://drive.google.com/...">
+          <div class="form-hint">
+            Upload CV ke Google Drive → Set sharing "Anyone with the link" → Copy link → Paste kat sini.<br>
+            Atau upload kat <a href="https://www.ilovepdf.com" target="_blank" style="color:var(--accent);">ilovepdf.com</a> dan paste direct link.
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px;">
+          <button class="submit-btn" style="flex:1;" onclick="saveCV()">💾 Simpan CV Link</button>
+          <button class="submit-btn" style="flex:1;background:rgba(255,106,155,0.15);color:var(--accent2);border:1px solid rgba(255,106,155,0.3);" onclick="removeCV()">🗑️ Buang CV</button>
+        </div>
+        <div id="cvStatus" style="margin-top:12px;font-size:12px;color:var(--muted);"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const SUPABASE_URL = 'https://cnzgkcsyxpqigzhbxmlh.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_kC5qI2H0sQHDhhtfQ-GM9g_19SJi8WH';
+  const ADMIN_PASSWORD = 'irham';
+  const ADMIN_SESSION_KEY = 'bambam_admin_unlocked';
+  let projectCache = [];
+  let certCache = [];
+
+  // ── PASSWORD ──
+  function unlockAdmin() {
+    sessionStorage.setItem(ADMIN_SESSION_KEY, '1');
+    document.getElementById('lockScreen').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    loadProjects(); loadCerts(); loadCVSetting();
+  }
+
+  function checkPw() {
+    if (document.getElementById('pwInput').value === ADMIN_PASSWORD) {
+      unlockAdmin();
+    } else {
+      document.getElementById('pwError').style.display = 'block';
+      document.getElementById('pwInput').value = '';
+    }
+  }
+
+  function logoutAdmin() {
+    sessionStorage.removeItem(ADMIN_SESSION_KEY);
+    document.getElementById('lockScreen').style.display = 'flex';
+    document.getElementById('adminPanel').style.display = 'none';
+    document.getElementById('pwInput').value = '';
+  }
+
+  if (sessionStorage.getItem(ADMIN_SESSION_KEY) === '1') unlockAdmin();
+
+  // ── TABS ──
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+  }
+
+  // ── PROJECTS ──
+  function parseLocalizedText(value) {
+    if (!value) return { ms: '', en: '', problem: { ms: '', en: '' }, solution: { ms: '', en: '' }, learning: { ms: '', en: '' } };
+    try {
+      const parsed = JSON.parse(value);
+      if (parsed && typeof parsed === 'object') {
+        return {
+          ms: parsed.ms || parsed.en || '',
+          en: parsed.en || parsed.ms || '',
+          problem: {
+            ms: parsed.problem?.ms || parsed.problem?.en || '',
+            en: parsed.problem?.en || parsed.problem?.ms || ''
+          },
+          solution: {
+            ms: parsed.solution?.ms || parsed.solution?.en || '',
+            en: parsed.solution?.en || parsed.solution?.ms || ''
+          },
+          learning: {
+            ms: parsed.learning?.ms || parsed.learning?.en || '',
+            en: parsed.learning?.en || parsed.learning?.ms || ''
+          }
+        };
+      }
+    } catch {}
+    return { ms: value, en: value, problem: { ms: '', en: '' }, solution: { ms: '', en: '' }, learning: { ms: '', en: '' } };
+  }
+
+  function packLocalizedText(ms, en) {
+    const cleanMs = ms.trim();
+    const cleanEn = en.trim();
+    if (!cleanEn || cleanEn === cleanMs) return cleanMs;
+    return JSON.stringify({ ms: cleanMs, en: cleanEn });
+  }
+
+  function packProjectDetails(longMs, longEn, problemMs, problemEn, solutionMs, solutionEn, learningMs, learningEn) {
+    const base = packLocalizedText(longMs, longEn);
+    const problem = packLocalizedText(problemMs, problemEn);
+    const solution = packLocalizedText(solutionMs, solutionEn);
+    const learning = packLocalizedText(learningMs, learningEn);
+    if (!problem && !solution && !learning) return base || null;
+    const parsedBase = parseLocalizedText(base);
+    return JSON.stringify({
+      ms: parsedBase.ms,
+      en: parsedBase.en,
+      problem: parseLocalizedText(problem),
+      solution: parseLocalizedText(solution),
+      learning: parseLocalizedText(learning)
+    });
+  }
+
+  function parseProjectMeta(value) {
+    if (!value) return { demo: '', github: '', report: '', architecture: '', status: 'Completed', featured: false };
+    try {
+      const parsed = JSON.parse(value);
+      if (parsed && typeof parsed === 'object') {
+        return {
+          demo: parsed.demo || parsed.url || '',
+          github: parsed.github || '',
+          report: parsed.report || '',
+          architecture: parsed.architecture || '',
+          status: parsed.status || 'Completed',
+          featured: Boolean(parsed.featured)
+        };
+      }
+    } catch {}
+    return { demo: value, github: '', report: '', architecture: '', status: 'Completed', featured: false };
+  }
+
+  function packProjectMeta(demo, github, report, architecture, status, featured) {
+    const cleanDemo = demo.trim();
+    const cleanGithub = github.trim();
+    const cleanReport = report.trim();
+    const cleanArchitecture = architecture.trim();
+    if (!cleanGithub && !cleanReport && !cleanArchitecture && status === 'Completed' && !featured) return cleanDemo || null;
+    return JSON.stringify({ demo: cleanDemo, github: cleanGithub, report: cleanReport, architecture: cleanArchitecture, status, featured });
+  }
+
+  function parseCertMeta(value) {
+    if (!value) return { name: '', category: 'Other' };
+    try {
+      const parsed = JSON.parse(value);
+      if (parsed && typeof parsed === 'object') {
+        return { name: parsed.name || '', category: parsed.category || 'Other' };
+      }
+    } catch {}
+    return { name: value, category: 'Other' };
+  }
+
+  function packCertMeta(name, category) {
+    const cleanName = name.trim();
+    if (category === 'Other') return cleanName || null;
+    return JSON.stringify({ name: cleanName, category });
+  }
+
+  function updateAdminStats() {
+    document.getElementById('statProjects').textContent = projectCache.length;
+    document.getElementById('statCerts').textContent = certCache.length;
+  }
+
+  async function loadProjects() {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/projects?select=*&order=created_at.desc`, {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    const data = await res.json();
+    projectCache = data;
+    updateAdminStats();
+    const list = document.getElementById('projList');
+    if (!data.length) { list.innerHTML = '<div style="color:var(--muted);font-size:12px;padding:16px 0;">Tiada projek lagi.</div>'; return; }
+    list.innerHTML = data.map(p => `
+      <div class="proj-item">
+        <div><div class="proj-item-name">${p.name}</div><div class="proj-item-cat">${p.category}${parseProjectMeta(p.link).featured ? ' · Featured' : ''}</div></div>
+        <div class="item-actions">
+          <button class="edit-btn" onclick="editProject('${String(p.id).replace(/'/g,"\\'")}')">Edit</button>
+          <button class="delete-btn" onclick="confirmDeleteProject('${String(p.id).replace(/'/g,"\\'")}')">Delete</button>
+        </div>
+      </div>`).join('');
+  }
+
+  async function saveProject() {
+    const editId = document.getElementById('projEditId').value;
+    const name = document.getElementById('projName').value.trim();
+    const desc = document.getElementById('projDesc').value.trim();
+    const descEn = document.getElementById('projDescEn').value.trim();
+    const cat  = document.getElementById('projCat').value;
+    const tags = document.getElementById('projTags').value.trim();
+    const link = document.getElementById('projLink').value.trim();
+    const github = document.getElementById('projGithub').value.trim();
+    const report = document.getElementById('projReport').value.trim();
+    const architecture = document.getElementById('projArchitecture').value.trim();
+    const status = document.getElementById('projStatus').value;
+    const featured = document.getElementById('projFeatured').checked;
+    const img  = document.getElementById('projImg').value.trim();
+    const longDesc = document.getElementById('projLongDesc').value.trim();
+    const longDescEn = document.getElementById('projLongDescEn').value.trim();
+    const problem = document.getElementById('projProblem').value.trim();
+    const problemEn = document.getElementById('projProblemEn').value.trim();
+    const solution = document.getElementById('projSolution').value.trim();
+    const solutionEn = document.getElementById('projSolutionEn').value.trim();
+    const learning = document.getElementById('projLearning').value.trim();
+    const learningEn = document.getElementById('projLearningEn').value.trim();
+    const images = document.getElementById('projImages').value.trim();
+    if (!name || !desc) { showToast('Nama dan description wajib!', 'error'); return; }
+    const btn = document.getElementById('projSubmitBtn');
+    btn.disabled = true; btn.textContent = 'Saving...';
+    const payload = {
+      name,
+      description: packLocalizedText(desc, descEn),
+      category: cat,
+      tags: tags||null,
+      link: packProjectMeta(link, github, report, architecture, status, featured),
+      image_url: img||null,
+      long_description: packProjectDetails(longDesc, longDescEn, problem, problemEn, solution, solutionEn, learning, learningEn),
+      images: images||null
+    };
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/projects${editId ? `?id=eq.${editId}` : ''}`, {
+      method: editId ? 'PATCH' : 'POST',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=representation' },
+      body: JSON.stringify(payload)
+    });
+    btn.disabled = false;
+    if (res.ok) {
+      showToast(editId ? '✓ Projek berjaya dikemaskini!' : '✓ Projek berjaya ditambah!', 'success');
+      resetProjectForm();
+      loadProjects();
+    } else showToast('Gagal. Cuba lagi.', 'error');
+  }
+
+  function editProject(id) {
+    const p = projectCache.find(item => String(item.id) === String(id));
+    if (!p) return;
+    document.getElementById('projEditId').value = p.id;
+    const desc = parseLocalizedText(p.description);
+    const longDesc = parseLocalizedText(p.long_description);
+    const meta = parseProjectMeta(p.link);
+    document.getElementById('projName').value = p.name || '';
+    document.getElementById('projDesc').value = desc.ms;
+    document.getElementById('projDescEn').value = desc.en;
+    document.getElementById('projLongDesc').value = longDesc.ms;
+    document.getElementById('projLongDescEn').value = longDesc.en;
+    document.getElementById('projProblem').value = longDesc.problem.ms;
+    document.getElementById('projProblemEn').value = longDesc.problem.en;
+    document.getElementById('projSolution').value = longDesc.solution.ms;
+    document.getElementById('projSolutionEn').value = longDesc.solution.en;
+    document.getElementById('projLearning').value = longDesc.learning.ms;
+    document.getElementById('projLearningEn').value = longDesc.learning.en;
+    document.getElementById('projCat').value = p.category || 'other';
+    document.getElementById('projTags').value = p.tags || '';
+    document.getElementById('projLink').value = meta.demo;
+    document.getElementById('projGithub').value = meta.github;
+    document.getElementById('projReport').value = meta.report;
+    document.getElementById('projArchitecture').value = meta.architecture;
+    document.getElementById('projStatus').value = meta.status;
+    document.getElementById('projFeatured').checked = meta.featured;
+    document.getElementById('projImg').value = p.image_url || '';
+    document.getElementById('projImages').value = p.images || '';
+    previewImage('projImg','projImgPreview');
+    document.getElementById('projSubmitBtn').textContent = 'Save Changes';
+    document.getElementById('projCancelBtn').style.display = 'block';
+    document.getElementById('tab-projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetProjectForm() {
+    ['projEditId','projName','projDesc','projDescEn','projLongDesc','projLongDescEn','projProblem','projProblemEn','projSolution','projSolutionEn','projLearning','projLearningEn','projTags','projLink','projGithub','projReport','projArchitecture','projImg','projImages'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('projCat').value = 'web';
+    document.getElementById('projStatus').value = 'Completed';
+    document.getElementById('projFeatured').checked = false;
+    document.getElementById('projSubmitBtn').textContent = '＋ Tambah Projek';
+    document.getElementById('projCancelBtn').style.display = 'none';
+    document.getElementById('projImgPreview').style.display = 'none';
+  }
+
+  function confirmDeleteProject(id) {
+    const p = projectCache.find(item => String(item.id) === String(id));
+    const name = p?.name || 'projek ini';
+    if (!confirm(`Delete "${name}"? Tindakan ini tak boleh undo.`)) return;
+    deleteProject(id);
+  }
+
+  async function deleteProject(id) {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/projects?id=eq.${id}`, {
+      method: 'DELETE', headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    if (res.ok) { showToast('Projek dipadam.', 'success'); loadProjects(); }
+    else showToast('Gagal padam.', 'error');
+  }
+
+  // ── CERTIFICATES ──
+  async function loadCerts() {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/certificates?select=*&order=created_at.desc`, {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    const data = await res.json();
+    certCache = data;
+    updateAdminStats();
+    const list = document.getElementById('certList');
+    if (!data.length) { list.innerHTML = '<div style="color:var(--muted);font-size:12px;padding:16px 0;">Tiada sijil lagi.</div>'; return; }
+    list.innerHTML = data.map(c => {
+      const meta = parseCertMeta(c.name);
+      return `
+      <div class="proj-item">
+        <div style="display:flex;align-items:center;gap:10px;">
+          ${c.image_url ? `<img src="${c.image_url}" style="width:40px;height:40px;object-fit:cover;border-radius:4px;">` : '📜'}
+          <div><div class="proj-item-name">${meta.name || 'Tanpa nama'}</div><div class="proj-item-cat">${meta.category}</div></div>
+        </div>
+        <div class="item-actions">
+          <button class="edit-btn" onclick="editCert('${String(c.id).replace(/'/g,"\\'")}')">Edit</button>
+          <button class="delete-btn" onclick="confirmDeleteCert('${String(c.id).replace(/'/g,"\\'")}')">Delete</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  async function saveCert() {
+    const editId = document.getElementById('certEditId').value;
+    const name = document.getElementById('certName').value.trim();
+    const category = document.getElementById('certCategory').value;
+    const img  = document.getElementById('certImg').value.trim();
+    if (!img) { showToast('Gambar sijil wajib!', 'error'); return; }
+    const btn = document.getElementById('certSubmitBtn');
+    btn.disabled = true; btn.textContent = 'Saving...';
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/certificates${editId ? `?id=eq.${editId}` : ''}`, {
+      method: editId ? 'PATCH' : 'POST',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=representation' },
+      body: JSON.stringify({ name: packCertMeta(name, category), image_url: img })
+    });
+    btn.disabled = false;
+    if (res.ok) { showToast(editId ? '✓ Sijil berjaya dikemaskini!' : '✓ Sijil berjaya ditambah!', 'success'); resetCertForm(); loadCerts(); }
+    else showToast('Gagal. Cuba lagi.', 'error');
+  }
+
+  function editCert(id) {
+    const c = certCache.find(item => String(item.id) === String(id));
+    if (!c) return;
+    const meta = parseCertMeta(c.name);
+    document.getElementById('certEditId').value = c.id;
+    document.getElementById('certName').value = meta.name;
+    document.getElementById('certCategory').value = meta.category;
+    document.getElementById('certImg').value = c.image_url || '';
+    previewImage('certImg','certImgPreview');
+    document.getElementById('certSubmitBtn').textContent = 'Save Changes';
+    document.getElementById('certCancelBtn').style.display = 'block';
+    document.getElementById('tab-certs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetCertForm() {
+    ['certEditId','certName','certImg'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('certCategory').value = 'Academic';
+    document.getElementById('certSubmitBtn').textContent = '＋ Tambah Sijil';
+    document.getElementById('certCancelBtn').style.display = 'none';
+    document.getElementById('certImgPreview').style.display = 'none';
+  }
+
+  function confirmDeleteCert(id) {
+    const c = certCache.find(item => String(item.id) === String(id));
+    const name = parseCertMeta(c?.name).name || 'sijil ini';
+    if (!confirm(`Delete "${name}"? Tindakan ini tak boleh undo.`)) return;
+    deleteCert(id);
+  }
+
+  async function deleteCert(id) {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/certificates?id=eq.${id}`, {
+      method: 'DELETE', headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    if (res.ok) { showToast('Sijil dipadam.', 'success'); loadCerts(); }
+    else showToast('Gagal padam.', 'error');
+  }
+
+  // ── CV SETTINGS ──
+  async function loadCVSetting() {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/settings?key=eq.cv_link&select=*`, {
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+      });
+      const data = await res.json();
+      const status = document.getElementById('cvStatus');
+      if (data.length && data[0].value) {
+        document.getElementById('cvLink').value = data[0].value;
+        document.getElementById('statCV').textContent = 'On';
+        status.innerHTML = '✅ CV link dah ada — button Download CV <b style="color:#55ff96;">aktif</b> kat website.';
+      } else {
+        status.innerHTML = '⚠️ Tiada CV link — button Download CV <b style="color:var(--accent2);">tersembunyi</b> kat website.';
+      }
+    } catch(e) { console.error(e); }
+  }
+
+  async function saveCV() {
+    const link = document.getElementById('cvLink').value.trim();
+    if (!link) { showToast('Masukkan link CV dulu!', 'error'); return; }
+
+    // check if exists
+    const check = await fetch(`${SUPABASE_URL}/rest/v1/settings?key=eq.cv_link&select=*`, {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    const existing = await check.json();
+
+    let res;
+    if (existing.length) {
+      // update
+      res = await fetch(`${SUPABASE_URL}/rest/v1/settings?key=eq.cv_link`, {
+        method: 'PATCH',
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ value: link })
+      });
+    } else {
+      // insert
+      res = await fetch(`${SUPABASE_URL}/rest/v1/settings`, {
+        method: 'POST',
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=representation' },
+        body: JSON.stringify({ key: 'cv_link', value: link })
+      });
+    }
+
+    if (res.ok) { showToast('✓ CV link berjaya disimpan! Button akan muncul kat website.', 'success'); loadCVSetting(); }
+    else showToast('Gagal simpan. Cuba lagi.', 'error');
+  }
+
+  async function removeCV() {
+    if (!confirm('Buang CV link? Button Download CV akan tersembunyi.')) return;
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/settings?key=eq.cv_link`, {
+      method: 'DELETE', headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+    });
+    if (res.ok) { showToast('CV link dibuang.', 'success'); document.getElementById('cvLink').value = ''; loadCVSetting(); }
+    else showToast('Gagal buang.', 'error');
+  }
+
+  function previewImage(inputId, previewId) {
+    const url = document.getElementById(inputId).value.trim();
+    const img = document.getElementById(previewId);
+    if (!url) {
+      img.style.display = 'none';
+      img.removeAttribute('src');
+      return;
+    }
+    img.src = url;
+    img.style.display = 'block';
+  }
+
+  // ── TOAST ──
+  function showToast(msg, type) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.className = `toast show ${type}`;
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  // ── THEME ──
+  function toggleTheme() {
+    const isLight = document.body.classList.toggle('light');
+    document.getElementById('thumb')?.classList.toggle('on', isLight);
+    document.getElementById('tlbl').textContent = isLight ? 'Light' : 'Dark';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  }
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light');
+    document.getElementById('thumb')?.classList.add('on');
+    const lbl = document.getElementById('tlbl'); if(lbl) lbl.textContent = 'Light';
+  }
+</script>
+</body>
+</html>
