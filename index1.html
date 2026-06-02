@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio NUR SYUHADAH BINTI MOHD LAZIM — Pelajar aliran Sains Komputer dari Malaysia.">
+  <meta name="keywords" content="NUR SYUHADAH BINTI MOHD LAZIM, portfolio, Pelajar aliran Sains Komputer, Malaysia">
+  <meta name="author" content="NUR SYUHADAH BINTI MOHD LAZIM">
+  <meta property="og:title" content="SYU — Portfolio">
+  <meta property="og:description" content="[TAGLINE ANDA]">
+  <meta property="og:url" content="[URL WEBSITE ANDA]">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="[URL GAMBAR PROFIL ANDA]">
+  <title>SYU — Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── CURSOR ── -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<!-- ── SIDE SOCIALS ── -->
+<div class="side-socials">
+  <a href="mailto:[EMAIL ANDA]" class="side-link" title="Email">✉</a>
+  <a href="https://github.com/[USERNAME GITHUB]" class="side-link" target="_blank" title="GitHub">⊹</a>
+  <a href="https://linkedin.com/in/[USERNAME LINKEDIN]" class="side-link" target="_blank" title="LinkedIn">∟</a>
+  <a href="https://instagram.com/[USERNAME INSTAGRAM]" class="side-link" target="_blank" title="Instagram">◎</a>
+  <div class="side-line"></div>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero">SYU<span>.</span></a>
+  <button class="nav-menu-btn" type="button" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a class="nav-link" href="#about" data-en="About" data-ms="Tentang">Tentang</a>
+    <a class="nav-link" href="#skills" data-en="Skills" data-ms="Kemahiran">Kemahiran</a>
+    <a class="nav-link" href="#achievements" data-en="Achievements" data-ms="Pencapaian">Pencapaian</a>
+    <a class="nav-link" href="#resume" data-en="Resume" data-ms="Resume">Resume</a>
+    <a class="nav-link" href="#contact" data-en="Contact" data-ms="Hubungi">Hubungi</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-wrap" onclick="toggleLang()" role="button" tabindex="0" aria-label="Toggle language" onkeydown="handleToggleKey(event, toggleLang)">
+      <span class="lang-opt">BM</span>
+      <div class="toggle-track"><div class="toggle-thumb" id="langThumb"></div></div>
+      <span class="lang-opt">EN</span>
+    </div>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☽</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg-text" aria-hidden="true">NUR SYUHADAH BINTI MOHD LAZIM</div>
+  <div class="hero-layout">
+    <!-- Left: Avatar + status -->
+    <div class="hero-left reveal">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <img class="hero-avatar-img" src="C:\Users\USER\OneDrive\Scholarships\passport photo.jpg" alt="NUR SYUHADAH BINTI MOHD LAZIM" onerror="this.parentElement.classList.add('avatar-fallback')">
+        <div class="avatar-initial" aria-hidden="true">S</div>
+      </div>
+      <div class="hero-status-pill">
+        <span class="status-dot"></span>
+        <span data-en="Open to opportunities" data-ms="Terbuka kepada peluang">Terbuka kepada peluang</span>
+      </div>
+    </div>
+
+    <!-- Right: Text content -->
+    <div class="hero-right">
+      <div class="hero-label reveal" data-en="Hello, I'm" data-ms="Hai, saya">Hai, saya</div>
+      <h1 class="hero-name reveal reveal-delay-1">SYU<br><em>NUR SYUHADAH BINTI MOHD LAZIM</em></h1>
+      <div class="hero-role reveal reveal-delay-2">
+        <span class="role-line"></span>
+        <span data-en="Science Computer Student" data-ms="Pelajar Sains Komputer">Pelajar Sains Komputer</span>
+      </div>
+      <p class="hero-bio reveal reveal-delay-2"
+        data-en="A Computer Science student with basic knowledge in Java, Python, and IoT. A quick learner with good problem-solving and communication skills, eager to further studies and expand knowledge in the technology field."
+        data-ms="Seorang pelajar Sains Komputer yang mempunyai pengetahuan asas dalam Java, Python dan IoT. Cepat belajar serta mempunyai kemahiran komunikasi dan penyelesaian masalah yang baik, serta bersemangat untuk melanjutkan pengajian dalam bidang teknologi.">
+        Seorang pelajar Sains Komputer yang mempunyai pengetahuan asas dalam Java, Python dan IoT. Cepat belajar serta mempunyai kemahiran komunikasi dan penyelesaian masalah yang baik, serta bersemangat untuk melanjutkan pengajian dalam bidang teknologi.
+      </p>
+      <div class="hero-cta reveal reveal-delay-3">
+        <a class="btn-outline" href="#contact" data-en="Say Hello" data-ms="Tegur Saya">Tegur Saya</a>
+        <a class="btn-outline" id="cvBtn" href="#" target="_blank" style="display:none;" data-en="Download CV" data-ms="Muat Turun CV">Muat Turun CV</a>
+      </div>
+      <div class="hero-stats reveal reveal-delay-3">
+        <div class="hstat"><span>3.88</span><small data-en="Latest GPA" data-ms="GPA Terkini">GPA Terkini</small></div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><span>2+</span><small data-en="Years Learning" data-ms="Tahun Belajar">Tahun Belajar</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint reveal reveal-delay-4">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="about-wrapper">
+    <div class="about-text-col">
+      <div class="section-eyebrow reveal" data-en="About Me" data-ms="Tentang Saya">Tentang Saya</div>
+      <h2 class="section-heading reveal" data-en="A bit about <em>who I am</em>" data-ms="Sedikit tentang <em>siapa saya</em>">Sedikit tentang <em>siapa saya</em></h2>
+      <p class="about-para reveal"
+        data-en="A strong interest in Information Technology and Computer Science has been developed through exposure to programming, software development, and emerging technologies such as IoT. The field is highly appealing due to its continuous growth, wide career opportunities, and its role in improving everyday life through innovation. Knowledge and skills in areas such as Java and Python are continuously being strengthened with the aim of pursuing further studies and building a successful career in the technology industry."
+        data-ms="Minat terhadap bidang Teknologi Maklumat dan Sains Komputer telah berkembang seiring dengan rasa ingin tahu terhadap dunia teknologi yang sentiasa berubah dan berkembang. Keindahan bidang ini terletak pada kemampuannya untuk menghubungkan manusia dengan inovasi serta mencipta penyelesaian yang memberi manfaat kepada kehidupan seharian. Pengetahuan dalam pengaturcaraan seperti Java, Python dan IoT terus diperkembangkan sebagai langkah untuk melanjutkan pengajian dan membina masa depan dalam industri teknologi yang penuh peluang dan potensi.">
+        Minat terhadap bidang Teknologi Maklumat dan Sains Komputer telah berkembang seiring dengan rasa ingin tahu terhadap dunia teknologi yang sentiasa berubah dan berkembang. Keindahan bidang ini terletak pada kemampuannya untuk menghubungkan manusia dengan inovasi serta mencipta penyelesaian yang memberi manfaat kepada kehidupan seharian. Pengetahuan dalam pengaturcaraan seperti Java, Python dan IoT terus diperkembangkan sebagai langkah untuk melanjutkan pengajian dan membina masa depan dalam industri teknologi yang penuh peluang dan potensi.7
+      </p>
+      <p class="about-para reveal"
+        data-en="Strong values in time management, continuous self-improvement, and effective communication are consistently applied in both academic and personal development. Learning is approached through both theoretical understanding and hands-on experience, with the goal of becoming a skilled web developer with strong knowledge in Computer Science."
+        data-ms="Nilai seperti pengurusan masa, semangat untuk sentiasa memperbaiki diri dan komunikasi yang berkesan sentiasa diterapkan dalam pembelajaran serta pembangunan diri. Pembelajaran dilakukan melalui pendekatan teori dan praktikal dengan matlamat untuk menjadi seorang pembangun web yang berkemahiran tinggi serta mempunyai pengetahuan yang kukuh dalam bidang Sains Komputer.">
+        Nilai seperti pengurusan masa, semangat untuk sentiasa memperbaiki diri dan komunikasi yang berkesan sentiasa diterapkan dalam pembelajaran serta pembangunan diri. Pembelajaran dilakukan melalui pendekatan teori dan praktikal dengan matlamat untuk menjadi seorang pembangun web yang berkemahiran tinggi serta mempunyai pengetahuan yang kukuh dalam bidang Sains Komputer.
+      </p>
+      <div class="about-chips reveal">
+        <span class="chip" data-en="Programming Skills" data-ms="Kemahiran Pengaturcaraan">Kemahiran Pengaturcaraan</span>
+        <span class="chip" data-en="Web Development" data-ms="Pembangunan Web">Pembangunan Web</span>
+        <span class="chip" data-en="Problem-Solving" data-ms="Penyelesaian Masalah">Penyelesaian Masalah</span>
+        <span class="chip" data-en="IoT Fundamentals" data-ms="Asas IoT">Asas IoT</span>
+        <span class="chip" data-en="Communication & Teamwork" data-ms="Komunikasi dan Kerja Berpasukan">Komunikasi dan Kerja Berpasukan</span>
+      </div>
+    </div>
+    <div class="about-cards-col reveal reveal-delay-1">
+      <div class="info-tile" onclick="openInfoModal('current')" role="button" tabindex="0" onkeydown="handleInfoCardKey(event,'current')">
+        <div class="tile-icon">🎓</div>
+        <div class="tile-label" data-en="Currently At" data-ms="Kini Di">Kini Di</div>
+        <div class="tile-val">KOLEJ MATRIKULASI JOHOR</div>
+        <div class="tile-arrow">→</div>
+      </div>
+      <div class="info-tile" onclick="openInfoModal('apply')" role="button" tabindex="0" onkeydown="handleInfoCardKey(event,'apply')">
+        <div class="tile-icon">✦</div>
+        <div class="tile-label" data-en="Applying To" data-ms="Memohon Ke">Memohon Ke</div>
+        <div class="tile-val">UKM FTSM 2026</div>
+        <div class="tile-arrow">→</div>
+      </div>
+      <div class="info-tile" onclick="openInfoModal('location')" role="button" tabindex="0" onkeydown="handleInfoCardKey(event,'location')">
+        <div class="tile-icon">📍</div>
+        <div class="tile-label" data-en="Based In" data-ms="Tinggal Di">Tinggal Di</div>
+        <div class="tile-val">Batu Pahat, Johor, Malaysia</div>
+        <div class="tile-arrow">→</div>
+      </div>
+      <div class="info-tile" onclick="openInfoModal('focus')" role="button" tabindex="0" onkeydown="handleInfoCardKey(event,'focus')">
+        <div class="tile-icon">◈</div>
+        <div class="tile-label" data-en="Focus Area" data-ms="Bidang Fokus">Bidang Fokus</div>
+        <div class="tile-val" 
+			 data-en="Database, Software Development, Cloud Computing" 
+			 data-ms="Pangkalan Data, Pembangunan Perisian, Pengkomputeran Awan">
+			 Database, Software Development, Cloud Computing
+		</div>
+        <div class="tile-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="section-eyebrow reveal" data-en="What I Know" data-ms="Apa Yang Saya Tahu">Apa Yang Saya Tahu</div>
+  <h2 class="section-heading reveal" data-en="My <em>Toolkit</em>" data-ms="Kemahiran <em>Saya</em>">Kemahiran <em>Saya</em></h2>
+  <p class="section-sub reveal"
+    data-en="What I use to solve problems and bring ideas to life."
+    data-ms="Apa yang saya gunakan untuk menyelesaikan masalah dan merialisasikan idea.">
+    Apa yang saya gunakan untuk menyelesaikan masalah dan merialisasikan idea.
+  </p>
+
+  <div class="skills-masonry">
+    <!-- Category 1 — edit/remove/add categories as needed -->
+    <div class="skill-cluster reveal reveal-delay-1">
+      <div class="cluster-header">
+        <div class="cluster-icon"><img src="C:\Users\USER\Downloads\programming.jpeg" alt="" onerror="this.style.display='none'"><span></span></div>
+        <div class="cluster-title" data-en="Programming Languages" data-ms="Alat Pengaturcaraan">Bahasa Pengaturcaraan</div>
+      </div>
+      <div class="cluster-skills">
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill1')">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYp6eevBPO-iP745QNbvacS-yjQ1tOtmwlkg&s" alt="Python" onerror="this.style.display='none'">
+          <span>Python</span>
+        </button>
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill2')">
+          <img src="C:\Users\USER\Downloads\java.png" alt="Java" onerror="this.style.display='none'">
+          <span>Java</span>
+        </button>
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill3')">
+          <img src="C:\Users\USER\Downloads\css.png" alt="CSS" onerror="this.style.display='none'">
+          <span>CSS</span>
+        </button>
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill4')">
+          <img src="C:\Users\USER\Downloads\html.png" alt="HTML" onerror="this.style.display='none'">
+          <span>HTML</span>
+        </button>
+        <!-- Tambah lebih banyak kemahiran di sini -->
+      </div>
+    </div>
+
+    <!-- Category 2 -->
+    <div class="skill-cluster reveal reveal-delay-2">
+      <div class="cluster-header">
+	  <div class="cluster-icon"><img src="C:\Users\USER\Downloads\digital tool.png" alt="" onerror="this.style.display='none'"><span></span></div>
+        <div class="cluster-title" data-en="Digital Tools" data-ms="Alat Digital">Alat Digital</div>
+      </div>
+      <div class="cluster-skills">
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill5')">
+          <img src="C:\Users\USER\Downloads\notepad.png" alt="" onerror="this.style.display='none'">
+          <span>Notepad++</span>
+        </button>
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill6')">
+          <img src="C:\Users\USER\Downloads\microsoft.png" alt="" onerror="this.style.display='none'">
+          <span>Microsoft Office</span>
+        </button>
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill7')">
+          <img src="C:\Users\USER\Downloads\vsc.jpeg" alt="" onerror="this.style.display='none'">
+          <span>VS Code</span>
+        </button>
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill8')">
+          <img src="C:\Users\USER\Downloads\canva.jpeg" alt="" onerror="this.style.display='none'">
+          <span>Canva</span>
+        </button>
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill9')">
+          <img src="C:\Users\USER\Downloads\capcut.png" alt="" onerror="this.style.display='none'">
+          <span>CapCut</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category 3 -->
+    <div class="skill-cluster reveal reveal-delay-3">
+      <div class="cluster-header">
+        <div class="cluster-title" data-en="Professional Skills" data-ms="Kemahiran Professional">Kemahiran Professional</div>
+      </div>
+      <div class="cluster-skills">
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill10')">
+          <span>Critical Thinking</span>
+        </button>
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill11')">
+          <span>Effective Communication</span>
+        </button>
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill12')">
+          <span>Time Management</span>
+        <button class="skill-pill" type="button" onclick="openSkillModal('skill13')">
+          <span>Leadership</span>
+        </button>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── JOURNEY TIMELINE ── -->
+<section id="journey">
+  <div class="section-eyebrow reveal" data-en="My Path" data-ms="Perjalanan Saya">Perjalanan Saya</div>
+  <h2 class="section-heading reveal" data-en="How I <em>Got Here</em>" data-ms="Bagaimana Saya <em>Sampai Sini</em>">Bagaimana Saya <em>Sampai Sini</em></h2>
+  <div class="journey-track">
+    <div class="journey-step reveal">
+      <div class="jstep-year">2014 - 2019</div>
+      <div class="jstep-dot"></div>
+      <div class="jstep-content">
+        <strong>Sekolah Kebangsaan Sri Gading</strong>
+        <p data-en="School prefect, participated in SK Sri Gading pantun team, awarded with 'Anugerah Pemantun Terbaik'." 
+		   data-ms="Pengawas sekolah,menyertai pasukan pantun SK Sri Gading, menerima anugerah pemantun terbaik">
+		   Pengawas sekolah,menyertai pasukan pantun SK Sri Gading, menerima anugerah pemantun terbaik
+		</p>
+      </div>
+    </div>
+    <div class="journey-step reveal reveal-delay-1">
+      <div class="jstep-year">2020 - 2024</div>
+      <div class="jstep-dot"></div>
+      <div class="jstep-content">
+        <strong>Sekolah Menengah Kebangsaan Sri Gading</strong>
+        <p data-en="Vice Head Prefect, Pure Science stream, recipient of Biasiswa Kecil Persekutuan, participated in Kem Daie Pena Muda (National)" 
+		   data-ms="Timbalan Ketua Pengawas, aliran Sains Tulen, penerima Biasiswa Kecil Persekutuan, menyertai Kem Daie Pena Muda (Kebangsaan)">
+		   Timbalan Ketua Pengawas, penerima Biasiswa Kecil Persekutuan, menyertai Kem Daie Pena Muda (Kebangsaan)
+		</p>
+      </div>
+    </div>
+    <div class="journey-step reveal reveal-delay-2">
+      <div class="jstep-year">2025 - 2026</div>
+      <div class="jstep-dot active"></div>
+      <div class="jstep-content">
+        <strong>Kolej Matrikulasi Johor</strong>
+        <p data-en="Computer Science stream, Participated in Pentas Gemalai Kata Lestari Budi KMJ"
+		   data-ms="Aliran Sains Komputer, menyertai Pentas Gemalai Kata Lestari Budi KMJ">
+		   Aliran Sains Komputer, menyertai Pentas Gemalai Kata Lestari Budi KMJ
+		</p>
+      </div>
+    </div>
+    <!-- Tambah lebih banyak steps kalau perlu -->
+  </div>
+</section>
+
+<!-- ── ACHIEVEMENTS ── -->
+<section id="achievements">
+  <div class="section-eyebrow reveal" data-en="Background" data-ms="Latar Belakang">Latar Belakang</div>
+  <h2 class="section-heading reveal" data-en="Education & <em>Achievements</em>" data-ms="Pendidikan & <em>Pencapaian</em>">Pendidikan & <em>Pencapaian</em></h2>
+
+  <!-- Results Row -->
+  <div class="results-strip reveal">
+    <div class="res-item" onclick="openEducationModal('result1')" role="button" tabindex="0" onkeydown="handleStoryCardKey(event,'education','result1')">
+      <div class="res-exam">UPSR</div>
+      <div class="res-score">5A 1B</div>
+      <div class="res-year">2019</div>
+    </div>
+    <div class="res-divider"></div>
+    <div class="res-item" onclick="openEducationModal('result2')" role="button" tabindex="0" onkeydown="handleStoryCardKey(event,'education','result3')">
+      <div class="res-exam">SPM</div>
+      <div class="res-score">4A+ 3A 2A- 1C+</div>
+	  <div class="res-year">2024</div>
+      <div class="res-year"></div>
+    </div>
+    <div class="res-divider"></div>
+    <div class="res-item" onclick="openEducationModal('result3')" role="button" tabindex="0" onkeydown="handleStoryCardKey(event,'education','result4')">
+      <div class="res-exam">CGPA</div>
+      <div class="res-score">3.75</div>
+      <div class="res-year">SEMESTER 1</div>
+    </div>
+  </div>
+
+  <!-- Achievement Cards -->
+  <div class="achieve-wrap">
+    <div class="achieve-tile wide reveal" onclick="openAchievementModal('ach1')" role="button" tabindex="0" onkeydown="handleStoryCardKey(event,'achievement','ach1')">
+      <div class="at-emoji">🏆</div>
+      <div>
+        <div class="at-title" data-en="SPM 2024 Excellent Student Award" data-ms="Anugerah Pelajar Cemerlang SPM 2024">Anugerah Pelajar Cemerlang SPM 2024</div>
+        <div class="at-desc" data-en="Awarded by SMK Sri Gading for achieving 9As for SPM 2024" 
+		     data-ms="Dianugerahkan oleh SMK Sri Gading atas kejayaan mendapatkan 9A untuk SPM 2024">
+			 Dianugerahkan oleh SMK Sri Gading atas kejayaan mendapatkan 9A untuk SPM 2024
+		</div>
+      </div>
+      <span class="at-year">2024</span>
+    </div>
+    <div class="achieve-tile reveal reveal-delay-1" onclick="openAchievementModal('ach2')" role="button" tabindex="0" onkeydown="handleStoryCardKey(event,'achievement','ach2')">
+      <div class="at-emoji">⭐</div>
+      <div>
+        <div class="at-title" data-en="Vice Head Prefect of SMK Sri Gading" data-ms="Timbalan Ketua Pengawas SMK Sri Gading">Timbalan Ketua Pengawas SMK Sri Gading</div>
+      </div>
+      <span class="at-year">2024</span>
+    </div>
+    <div class="achieve-tile reveal reveal-delay-2" onclick="openAchievementModal('ach3')" role="button" tabindex="0" onkeydown="handleStoryCardKey(event,'achievement','ach3')">
+      <div class="at-emoji">🎖️</div>
+      <div>
+        <div class="at-title" data-en="ADNI Highest Achievement Award" data-ms="Anugerah Pencapaian Tertinggi ADNI">Anugerah Pencapaian Tertinggi ADNI</div>
+        <div class="at-desc" data-en="Awarded by PPD Batu Pahat" 
+		     data-ms="Dianugerahkan oleh PPD Batu Pahat">
+			 Dianugerahkan oleh PPD Batu Pahat
+		</div>
+      </div>
+      <span class="at-year">2024</span>
+    </div>
+    <div class="achieve-tile wide reveal" onclick="openAchievementModal('ach4')" role="button" tabindex="0" onkeydown="handleStoryCardKey(event,'achievement','ach4')">
+      <div class="at-emoji">💡</div>
+      <div>
+        <div class="at-title" data-en="Selected Writer for the ASEAN Student Syair Anthology(National)" data-ms="Penulis Terpilih Antologi Syair Pelajar ASEAN (Kebangsaan) ">Penulis Terpilih Antologi Syair Pelajar ASEAN (Kebangsaan)</div>
+        <div class="at-desc" data-en="Awarded by Pekumpulan Rumah Seni Asnur" 
+			 data-ms="Dianugerahkan oleh Perkumpulan Rumah Seni Asnur">
+			 Dianugerahkan oleh Perkumpulan Rumah Seni Asnur
+		</div>
+      </div>
+      <span class="at-year">2023</span>
+    </div>
+    <div class="achieve-tile wide reveal" onclick="openAchievementModal('ach5')" role="button" tabindex="0" onkeydown="handleStoryCardKey(event,'achievement','ach5')">
+      <div class="at-emoji">💡</div>
+      <div>
+        <div class="at-title" data-en="Resensi Karya Emas Award (National)" data-ms="Anugerah Resensi Karya Emas(Kebangsaan) ">Anugerah Resensi Karya Emas(Kebangsaan)</div>
+        <div class="at-desc" data-en="Kem Daie Pena Muda Ministry of Education Malaysia National Level" 
+			 data-ms="Kem Daie Pena Muda Kementerian Pendidikan Malaysia Peringkat Kebangsaan">
+			 Kem Daie Pena Muda Kementerian Pendidikan Malaysia Peringkat Kebangsaan
+		</div>
+      </div>
+      <span class="at-year">2023</span>
+    </div>
+    <!-- Tambah atau buang tiles mengikut keperluan -->
+  </div>
+
+  <!-- Certificates -->
+  <div class="section-eyebrow reveal" style="margin-top:60px;" data-en="Certificates" data-ms="Sijil-sijil">Sijil-sijil</div>
+  <div class="filter-row reveal">
+    <button class="filter-btn active" onclick="filterCerts('all',this)" data-en="All" data-ms="Semua">Semua</button>
+    <button class="filter-btn" onclick="filterCerts('Academic',this)">Academic</button>
+    <button class="filter-btn" onclick="filterCerts('Competition',this)">Competition</button>
+    <button class="filter-btn" onclick="filterCerts('Workshop',this)">Workshop</button>
+    <button class="filter-btn" onclick="filterCerts('Scholarship',this)">Scholarship</button>
+  </div>
+  <div class="cert-gallery reveal" id="certGallery">
+    <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">Memuatkan sijil...</div>
+  </div>
+</section>
+
+<!-- ── RESUME ── -->
+<section id="resume">
+  <div class="resume-card">
+    <div class="resume-left">
+      <div class="section-eyebrow reveal" data-en="Resume" data-ms="Resume">Resume</div>
+      <h2 class="section-heading reveal" data-en="My <em>Profile</em>" data-ms="Profil <em>Saya</em>">Profil <em>Saya</em></h2>
+      <p class="section-sub reveal"
+        data-en="A snapshot of my education, skills, and achievements."
+        data-ms="Gambaran ringkas pendidikan, kemahiran, dan pencapaian saya.">
+        Gambaran ringkas pendidikan, kemahiran, dan pencapaian saya.
+      </p>
+      <div class="resume-btns reveal">
+        <a class="btn-primary" id="resumeBtn" href="#" target="_blank" style="display:none;" data-en="↓ Download PDF" data-ms="↓ Muat Turun PDF">↓ Muat Turun PDF</a>
+        <a class="btn-outline" href="#contact" data-en="Contact Me" data-ms="Hubungi Saya">Hubungi Saya</a>
+      </div>
+    </div>
+    <div class="resume-right reveal reveal-delay-1">
+      <div class="resume-field">
+        <span class="rf-label" data-en="Name" data-ms="Nama">Nama</span>
+        <span class="rf-val">NUR SYUHADAH BINTI MOHD LAZIM</span>
+      </div>
+      <div class="resume-field">
+        <span class="rf-label" data-en="Role" data-ms="Peranan">Peranan</span>
+        <span class="rf-val" data-en="Fresh Graduate in Computer Science" data-ms="Graduan Baharu dalam Science Komputer">Graduan Baharu dalam Science Komputer</span>
+      </div>
+      <div class="resume-field">
+        <span class="rf-label" data-en="Location" data-ms="Lokasi">Lokasi</span>
+        <span class="rf-val">Batu Pahat, Malaysia</span>
+      </div>
+      <div class="resume-field">
+        <span class="rf-label" data-en="Institution" data-ms="Institusi">Institusi</span>
+        <span class="rf-val">Kolej Matrikulasi Johor</span>
+      </div>
+      <div class="resume-field">
+        <span class="rf-label">CGPA</span>
+        <span class="rf-val">3.75</span>
+      </div>
+      <div class="resume-field">
+        <span class="rf-label" data-en="Status" data-ms="Status">Status</span>
+        <span class="rf-val rf-status" data-en="Available" data-ms="Tersedia">Tersedia</span>
+      </div>
+      <div class="resume-field">
+        <span class="rf-label">GitHub</span>
+        <a href="https://github.com/[USERNAME GITHUB]" target="_blank" class="rf-link">github.com/[USERNAME GITHUB]</a>
+      </div>
+      <div class="resume-field">
+        <span class="rf-label">LinkedIn</span>
+        <a href="https://linkedin.com/in/[USERNAME LINKEDIN]" target="_blank" class="rf-link">[USERNAME LINKEDIN]</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-header">
+    <div class="section-eyebrow reveal" data-en="Get In Touch" data-ms="Hubungi Saya">Hubungi Saya</div>
+    <h2 class="section-heading reveal" data-en="Let's <em>Talk</em>" data-ms="Jom <em>Berbual</em>">Jom <em>Berbual</em></h2>
+    <p class="section-sub reveal"
+      data-en="Lets connect to know more about me!"
+      data-ms="Mari berkenalan dengan saya untuk mendapatkan info lebih lanjut!">
+      Mari berkenalan dengan saya untuk mendapatkan info lebih lanjut!
+    </p>
+  </div>
+
+  <div class="contact-layout">
+    <div class="contact-links reveal">
+      <a href="mailto:syuhadahlazim@gmail.com" class="clink">
+        <div class="clink-icon"><img src="https://cdn.simpleicons.org/gmail/EA4335" alt="Email"></div>
+        <div class="clink-info">
+          <div class="clink-label" data-en="Email" data-ms="E-mel">E-mel</div>
+          <div class="clink-val">syuhadahlazim@gmail.com</div>
+        </div>
+        <span class="clink-arrow">↗</span>
+      </a>
+      <a href="https://wa.me/60127359513" class="clink" target="_blank">
+        <div class="clink-icon"><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp"></div>
+        <div class="clink-info">
+          <div class="clink-label">WhatsApp</div>
+          <div class="clink-val">+60127359513</div>
+        </div>
+        <span class="clink-arrow">↗</span>
+      </a>
+      <a href="https://instagram.com/yjwshoo" class="clink" target="_blank">
+        <div class="clink-icon"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram"></div>
+        <div class="clink-info">
+          <div class="clink-label">Instagram</div>
+          <div class="clink-val">@yjwshoo</div>
+        </div>
+        <span class="clink-arrow">↗</span>
+      </a>
+      <a href="https://linkedin.com/in/[USERNAME LINKEDIN]" class="clink" target="_blank">
+        <div class="clink-icon clink-li">in</div>
+        <div class="clink-info">
+          <div class="clink-label">LinkedIn</div>
+          <div class="clink-val">[USERNAME LINKEDIN]</div>
+        </div>
+        <span class="clink-arrow">↗</span>
+      </a>
+      <a href="https://github.com/[USERNAME GITHUB]" class="clink" target="_blank">
+        <div class="clink-icon"><img src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub"></div>
+        <div class="clink-info">
+          <div class="clink-label">GitHub</div>
+          <div class="clink-val">github.com/[USERNAME GITHUB]</div>
+        </div>
+        <span class="clink-arrow">↗</span>
+      </a>
+      <!-- Tambah atau buang social links mengikut keperluan -->
+    </div>
+
+    <div class="contact-form reveal reveal-delay-1">
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">✦</div>
+        <div data-en="Message sent! I'll get back to you soon." data-ms="Mesej berjaya dihantar! Saya akan balas secepat mungkin.">Mesej berjaya dihantar!</div>
+      </div>
+      <div id="formContainer">
+        <div class="form-group">
+          <label class="form-label" data-en="Your Name" data-ms="Nama Anda">Nama Anda</label>
+          <input class="form-input" type="text" id="formName"
+            placeholder="Nama anda..."
+            data-ms-placeholder="Nama anda..."
+            data-en-placeholder="Your name...">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Your Email" data-ms="E-mel Anda">E-mel Anda</label>
+          <input class="form-input" type="email" id="formEmail"
+            placeholder="nama@email.com"
+            data-ms-placeholder="nama@email.com"
+            data-en-placeholder="name@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Message" data-ms="Mesej">Mesej</label>
+          <textarea class="form-textarea" id="formMessage"
+            placeholder="Tulis mesej anda..."
+            data-ms-placeholder="Tulis mesej anda..."
+            data-en-placeholder="Write your message here..."></textarea>
+        </div>
+        <button class="form-submit" id="formSubmit" onclick="submitForm()">
+          <span data-en="Send Message ✦" data-ms="Hantar Mesej ✦">Hantar Mesej ✦</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="footer-logo" href="#hero">SYU<span>.</span></a>
+    <p class="footer-quote" data-en="Passionate About Technology and Continuous Learning" data-ms="Berminat tentang Teknologi dan Pembelajaran Berterusan">Berminat tentang Teknologi dan Pembelajaran Berterusan</p>
+    <div class="footer-copy">© [2026]NUR SYUHADAH BINTI MOHD LAZIM · <span id="footerTrigger" onclick="handleFooterClick()" style="cursor:pointer;">Made with ♡</span></div>
+  </div>
+</footer>
+
+<!-- ── MODAL ── -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" onclick="closeModalDirect()" aria-label="Close">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">✕</span>
+  <img id="lightboxImg" src="" alt="gambar">
+</div>
+
+<div class="toast" id="siteToast"></div>
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Scroll to top">↑</button>
+
+<script src="chatbot.js" onerror="console.log('chatbot not loaded')"></script>
+<script>
+  // ══════════════════════════════════════════════════════════
+  // SUPABASE CONFIG — tukar kepada credentials anda sendiri
+  // Kalau tak guna Supabase, projek dan sijil perlu diletak secara manual
+  // ══════════════════════════════════════════════════════════
+  const SUPABASE_URL = 'https://jdahjbvawotjilidefse.supabase.co/rest/v1/';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkYWhqYnZhd290amlsaWRlZnNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2ODYwMTgsImV4cCI6MjA5NTI2MjAxOH0.SPnKrXEoR5waYqFWs3Dv8lHpo9tsJzZ3ABtXYmpUIRI';
+
+  let allCerts = [];
+  let activeCertFilter = 'all';
+
+  // ── CUSTOM CURSOR ──
+  const cur = document.getElementById('cursor');
+  const curF = document.getElementById('cursorFollower');
+  let fx = 0, fy = 0, cx = 0, cy = 0;
+  document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; cur.style.transform = `translate(${cx}px,${cy}px)`; });
+  function animateCursor() { fx += (cx - fx) * 0.12; fy += (cy - fy) * 0.12; curF.style.transform = `translate(${fx-12}px,${fy-12}px)`; requestAnimationFrame(animateCursor); }
+  animateCursor();
+  document.addEventListener('mousedown', () => cur.classList.add('press'));
+  document.addEventListener('mouseup', () => cur.classList.remove('press'));
+
+  // ── SCROLL REVEAL ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── ACTIVE NAV ──
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    document.querySelectorAll('.nav-link').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+    document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+  });
+
+  function closeModal(e) { if (e.target === document.getElementById('modalOverlay')) closeModalDirect(); }
+  function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+
+  // ── STORY DATA — tukar semua kandungan di sini ──
+  const infoStories = {
+    current: {
+	  category: { ms: 'Kini Di', en: 'Currently At' },
+	  title: { ms: 'Kolej Matrikulasi Johor', en: 'Kolej Matrikulasi Johor' },
+	  tags: ['Learning Journey', 'Self Growth', 'New Experience'],
+	  desc: {
+		ms: 'Fasa ini mengajar saya untuk menjadi lebih berdikari, mengurus masa dengan lebih baik dan terus berusaha walaupun berdepan cabaran akademik. Kehidupan di matrikulasi membuka peluang untuk saya mengenali potensi diri, membina keyakinan dan belajar keluar dari zon selesa.',
+		en: 'This phase has taught me to become more independent, manage my time better, and keep pushing forward despite academic challenges. Life in matriculation has helped me discover my potential, build confidence, and learn to step out of my comfort zone.'
+	  },
+	  highlights: {
+		ms: [
+		  'Belajar mengurus masa dan tekanan akademik',
+		  'Meningkatkan keyakinan diri dan komunikasi',
+		  'Membina pengalaman dan kemahiran baharu'
+		],
+		en: [
+		  'Learning to manage time and academic pressure',
+		  'Improving confidence and communication skills',
+		  'Building new experiences and skills'
+		]
+	  },
+	  photos: ['Campus Life', 'Class Session', 'Memories']
+	},
+    apply: {
+	  category: { ms: 'Memohon Ke', en: 'Applying To' },
+	  title: { ms: 'UKM FTSM 2026', en: 'UKM FTSM 2026' },
+	  tags: ['Dream University', 'Future Goal', 'Computer Science'],
+	  desc: {
+		ms: 'Saya berharap dapat melanjutkan pengajian dalam bidang teknologi dan sains komputer untuk mengembangkan kemahiran serta mencapai cita-cita sebagai individu yang mampu memberi manfaat melalui teknologi. Permohonan ini bukan sekadar tentang pendidikan, tetapi juga langkah penting dalam perjalanan masa depan saya.',
+		en: 'I hope to further my studies in technology and computer science to develop my skills and achieve my goals of becoming someone who can contribute through technology. This application is not only about education, but also an important step in shaping my future journey.'
+	  },
+	  highlights: {
+		ms: [
+		  'Mengejar impian dalam bidang teknologi',
+		  'Mengembangkan kemahiran dan pengalaman',
+		  'Membina masa depan yang lebih baik'
+		],
+		en: [
+		  'Pursuing my passion in technology',
+		  'Developing skills and experiences',
+		  'Building a better future'
+		]
+	  },
+	  photos: ['Future Goals', 'University Dream']
+	},
+    location: {
+	  category: { ms: 'Tinggal Di', en: 'Based In' },
+	  title: { ms: 'Batu Pahat, Malaysia', en: 'Batu Pahat, Malaysia' },
+	  tags: ['Malaysia', 'Hometown'],
+	  desc: {
+		ms: 'Tempat ini menjadi sebahagian besar dalam perjalanan hidup saya. Dari sini saya belajar tentang usaha, kesederhanaan dan kepentingan menghargai setiap peluang yang datang. Persekitaran ini membentuk diri saya menjadi lebih kuat dan matang.',
+		en: 'This place has become a significant part of my life journey. Here, I learned about hard work, simplicity, and the importance of appreciating every opportunity. This environment shaped me into a stronger and more mature person.'
+	  },
+	  highlights: {
+		ms: [
+		  'Membentuk nilai diri dan disiplin',
+		  'Menjadi sumber motivasi dan inspirasi'
+		],
+		en: [
+		  'Shaping personal values and discipline',
+		  'Becoming a source of motivation and inspiration'
+		]
+	  },
+	  photos: ['Hometown', 'Daily Life']
+	},
+	   focus: {
+	  category: { ms: 'Bidang Fokus', en: 'Focus Area' },
+	  title: {
+		ms: 'Pangkalan Data, Pembangunan Perisian, Pengkomputeran Awan',
+		en: 'Database, Software Development, Cloud Computing'
+	  },
+	  tags: ['Technology', 'Innovation', 'Problem Solving'],
+	  desc: {
+		ms: 'Saya tertarik dengan dunia teknologi kerana ia sentiasa berkembang dan memberi peluang untuk mencipta sesuatu yang berguna kepada masyarakat. Bidang ini membuatkan saya ingin terus belajar, mencabar diri dan meneroka pelbagai kemungkinan dalam dunia digital.',
+		en: 'I am interested in the world of technology because it is constantly evolving and provides opportunities to create meaningful solutions for society. This field motivates me to keep learning, challenge myself, and explore endless possibilities in the digital world.'
+	  },
+	  highlights: {
+		ms: [
+		  'Minat terhadap pembangunan teknologi',
+		  'Suka mempelajari perkara baharu',
+		  'Ingin membina penyelesaian digital yang bermanfaat'
+		],
+		en: [
+		  'Passion for technology development',
+		  'Enjoy learning new things',
+		  'Interested in building meaningful digital solutions'
+		]
+	  },
+	  photos: ['Technology', 'Coding Journey']
+	}
+  };
+
+  const skillStories = {
+    skill1: {
+      icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYp6eevBPO-iP745QNbvacS-yjQ1tOtmwlkg&s',
+      title: 'Python',
+      category: 'Programming Languages',
+      tags: ['Programming', 'Problem Solving'],
+      desc: { ms: 'Bahasa pengaturcaraan yang digunakan untuk pembelajaran asas coding, penyelesaian masalah dan pembangunan sistem.',
+			  en: 'A programming language used for learning coding fundamentals, problem solving, and system development.' },
+      uses: { ms: ['Membina program asas', 'Latihan coding','Penyelesaian masalah'],
+			  en: ['Building basic programs', 'Coding practice', 'Problem solving'] }
+    },
+     skill2: {
+    icon: 'C:\\Users\\USER\\Downloads\\java.png',
+    title: 'Java',
+    category: 'Programming Languages',
+    tags: ['Object-Oriented', 'Programming'],
+    desc: {
+      ms: 'Bahasa pengaturcaraan berorientasikan objek yang digunakan untuk pembangunan aplikasi dan pembelajaran struktur program.',
+      en: 'An object-oriented programming language used for application development and program structure learning.'
+    },
+    uses: {
+      ms: ['Membangunkan aplikasi', 'Latihan OOP', 'Pembelajaran coding'],
+      en: ['Developing applications', 'OOP practice', 'Programming learning']
+    }
+    },
+    skill3: {
+    icon: 'C:\\Users\\USER\\Downloads\\css.png',
+    title: 'CSS',
+    category: 'Web Development',
+    tags: ['Styling', 'Frontend'],
+    desc: {
+      ms: 'Digunakan untuk mereka bentuk dan mencantikkan paparan laman web.',
+      en: 'Used to design and style website interfaces.'
+    },
+    uses: {
+      ms: ['Reka bentuk website', 'Mengubah layout', 'Styling halaman web'],
+      en: ['Website design', 'Editing layouts', 'Web page styling']
+    }
+    },
+     skill4: {
+    icon: 'C:\\Users\\USER\\Downloads\\html.png',
+    title: 'HTML',
+    category: 'Web Development',
+    tags: ['Frontend', 'Structure'],
+    desc: {
+      ms: 'Bahasa asas untuk membina struktur dan kandungan laman web.',
+      en: 'The foundational language used to build website structure and content.'
+    },
+    uses: {
+      ms: ['Membina struktur website', 'Mencipta halaman web', 'Frontend development'],
+      en: ['Building website structures', 'Creating web pages', 'Frontend development']
+    }
+    },
+     skill5: {
+    icon: 'C:\\Users\\USER\\Downloads\\notepad.png',
+    title: 'Notepad++',
+    category: 'Software & Tools',
+    tags: ['Code Editor', 'Text Editing'],
+    desc: {
+      ms: 'Editor teks yang digunakan untuk menulis dan mengurus kod pengaturcaraan.',
+      en: 'A text editor used for writing and managing programming code.'
+    },
+    uses: {
+      ms: ['Menulis kod', 'Mengedit fail', 'Pembelajaran programming'],
+      en: ['Writing code', 'Editing files', 'Programming learning']
+    }
+    },
+     skill6: {
+    icon: 'C:\\Users\\USER\\Downloads\\microsoft.png',
+    title: 'Microsoft Office',
+    category: 'Software & Tools',
+    tags: ['Productivity', 'Documentation'],
+    desc: {
+      ms: 'Digunakan untuk menghasilkan dokumen, pembentangan dan pengurusan data.',
+      en: 'Used for creating documents, presentations, and managing data.'
+    },
+    uses: {
+      ms: ['Membuat laporan', 'Pembentangan', 'Pengurusan data'],
+      en: ['Creating reports', 'Presentations', 'Data management']
+    }
+    },
+     skill7: {
+    icon: 'C:\\Users\\USER\\Downloads\\vsc.jpeg',
+    title: 'VS Code',
+    category: 'Software & Tools',
+    tags: ['Code Editor', 'Development'],
+    desc: {
+      ms: 'Editor kod yang digunakan untuk pembangunan program dan website.',
+      en: 'A code editor used for program and website development.'
+    },
+    uses: {
+      ms: ['Menulis kod', 'Web development', 'Debugging'],
+      en: ['Writing code', 'Web development', 'Debugging']
+	}
+    },
+ skill8: {
+    icon: 'C:\\Users\\USER\\Downloads\\canva.jpeg',
+    title: 'Canva',
+    category: 'Design Tools',
+    tags: ['Design', 'Creativity'],
+    desc: {
+      ms: 'Platform reka bentuk grafik yang digunakan untuk menghasilkan poster, slaid dan kandungan visual.',
+      en: 'A graphic design platform used for creating posters, slides, and visual content.'
+    },
+    uses: {
+      ms: ['Mereka poster', 'Membuat presentation', 'Design media sosial'],
+      en: ['Designing posters', 'Creating presentations', 'Social media design']
+    }
+	},
+    skill9: {
+    icon: 'C:\\Users\\USER\\Downloads\\capcut.png',
+    title: 'CapCut',
+    category: 'Editing Tools',
+    tags: ['Video Editing', 'Content Creation'],
+    desc: {
+      ms: 'Aplikasi penyuntingan video yang digunakan untuk menghasilkan kandungan kreatif.',
+      en: 'A video editing application used for creating creative content.'
+    },
+    uses: {
+      ms: ['Edit video', 'Content creation', 'Media editing'],
+      en: ['Video editing', 'Content creation', 'Media editing']
+    }
+    },
+   skill10: {
+    title: 'Critical Thinking',
+    category: 'Soft Skills',
+    tags: ['Analysis', 'Problem Solving'],
+    desc: {
+      ms: 'Kemahiran berfikir secara kritis untuk menganalisis dan menyelesaikan masalah dengan berkesan.',
+      en: 'The ability to analyze situations critically and solve problems effectively.'
+    },
+    uses: {
+      ms: ['Penyelesaian masalah', 'Membuat keputusan'],
+      en: ['Problem solving', 'Decision making']
+    }
+    },
+   skill11: {
+    title: 'Effective Communication',
+    category: 'Soft Skills',
+    tags: ['Communication', 'Teamwork'],
+    desc: {
+      ms: 'Kemahiran berkomunikasi dengan jelas dan berkesan dalam kerja berkumpulan.',
+      en: 'The ability to communicate clearly and effectively in team environments.'
+    },
+    uses: {
+      ms: ['Kerja berkumpulan', 'Pembentangan'],
+      en: ['Team collaboration', 'Presentations']
+    }
+    },
+     skill12: {
+    title: 'Time Management',
+    category: 'Soft Skills',
+    tags: ['Productivity', 'Discipline'],
+    desc: {
+      ms: 'Kemahiran mengurus masa dengan baik untuk meningkatkan produktiviti.',
+      en: 'The ability to manage time efficiently to improve productivity.'
+    },
+    uses: {
+      ms: ['Mengurus tugasan', 'Menepati deadline'],
+      en: ['Managing tasks', 'Meeting deadlines']
+    }
+    },
+     skill13: {
+    title: 'Leadership',
+    category: 'Soft Skills',
+    tags: ['Leadership', 'Management'],
+    desc: {
+      ms: 'Kemahiran memimpin dan bekerjasama dalam organisasi dan aktiviti berkumpulan.',
+      en: 'The ability to lead and collaborate effectively in organizations and group activities.'
+    },
+    uses: {
+      ms: ['Mengurus kumpulan', 'Membimbing ahli pasukan'],
+      en: ['Managing teams', 'Guiding team members']
+    }
+    }
+    // Tambah lebih banyak kemahiran mengikut keperluan
+  };
+
+  const educationStories = {
+    result1: {
+      category: { ms: 'Keputusan', en: 'Result' },
+      title: 'UPSR',
+      tags: ['2019', '5A 1B'],
+      desc: { ms: 'Peperiksaan ini telah menjadi batu loncatan dan motivasi untuk menjadi pelajar yang lebih cemerlang.', 
+			  en: 'Passing with flying colours became the stepping stone and motivation for me to be a better student.' 
+			},
+      highlights: { ms: ['Mengenali teknik pembelajaran yang sesuai', 'Mengetahui potensi diri'], 
+	                en: ['Finding suitable learning techniques ', 'Discovering personal potential'] },
+      photos: ['[Label gambar 1]', '[Label gambar 2]']
+    },
+    result2: {
+      category: { ms: 'Keputusan', en: 'Result' },
+      title: '[SPM]',
+      tags: ['2024', '4A+ 3A 2A- 1C+'],
+      desc: { ms: 'Subjek-subjek aliran Sains Tulen yang kompleks mendorong saya untuk belajar dengan lebih giat untuk mencapai keputusan cemerlang.', 
+	          en: 'Complex Pure Science subjects drove me to study harder in order to achieve a good result.' },
+      highlights: { ms: ['Belajar mengurus masa','Usaha menanam tekad dalam diri'],
+                    en: ['Learning effective time management','Building determination and self-motivation'] },
+      photos: ['[Gambar 1]']
+    },
+    result3: {
+      category: { ms: 'Keputusan', en: 'Result' },
+      title: 'PSPM 1]',
+      tags: ['2025', '3.75'],
+      desc: { ms: 'Menyesuaikan diri dengan persekitaran baharu dalam masa yang singkat merupakan sebuah cabaran, namun ia bukan sebuah penghalang.',
+        	  en: 'Adapting with new enviroment in a short time is not easy, but it should not be an obstacle i could not overcome.' },
+      highlights: { ms: ['Menyesuaikan diri dalam situasi baharu'], 
+	                en: ['Adapting to new environment'] },
+      photos: ['[Gambar 1]', '[Gambar 2]']
+    },
+    result4: {
+      category: { ms: 'Keputusan', en: 'Result' },
+      title: '[GPA / PNGA / CGPA]',
+      tags: ['[SEMESTER/TAHUN]'],
+      desc: { ms: '[Cerita tentang pencapaian GPA ini]', en: '[Story about this GPA achievement]' },
+      highlights: { ms: ['[Perkara 1]', '[Perkara 2]'], en: ['[Point 1]', '[Point 2]'] },
+      photos: ['[Gambar 1]']
+    }
+  };
+
+  const achievementStories = {
+    ach1: {
+      category: { ms: 'Pencapaian', en: 'Achievement' },
+      title: { ms: 'Anugerah Pelajar Cemerlang SPM 2024', en: 'SPM 2024 Excellent Student Award' },
+      tags: ['2024', 'SMK Sri Gading'],
+      desc: { ms: 'Anugerah ini telah menjadi pembakar semangat untuk menyambung pelajaran ke menara gading dan menjadi tanda penghargaan kerja keras saya sepanjang menuntut ilmu di SMK Sri Gading.', 
+			  en: 'This award became the motivation to pursue my studies and a token of appreciation to all my efforts while studying in SMK Sri Gading.' },
+      highlights: { ms: ['Penghargaan dari pihak sekolah', 'Membanggakan ibu bapa', 'Simbol kejayaan bagi diri sendiri'],
+					en: ['Appreciation from the school', 'To make my parents proud', 'Personal academic succes symbol'] },
+      certs: ['[Label sijil / bukti 1]', '[Label sijil / bukti 2]']
+    },
+    ach2: {
+      category: { ms: 'Pencapaian', en: 'Achievement' },
+      title: { ms: 'Timbalan Ketua Pengawas', en: 'Vice Head Prefect' },
+      tags: ['2024'],
+      desc: { ms: 'Perlantikan ini telah menjadi titik tolak yang membentuk saya sebagai seorang individu yang lebih bertanggungjawab, berani memimpin dan lantang menyatakan pendapat.',
+			  en: 'This position has shaped me to have more sense of accounatability, leadership skills, not scared to voice out my opinions.' },
+      highlights: { ms: ['Kemahiran memimpin', 'Komunikasi berkesan', 'Bekerja dalam pasukan'],
+			        en: ['Leadership skills', 'Effective communication', 'Teamwork'] },
+      certs: ['[Sijil 1]']
+    },
+    ach3: {
+      category: { ms: 'Pencapaian', en: 'Achievement' },
+      title: { ms: 'Anugerah Pencapaian Tertinggi ADNI', en: 'ADNI Highest Achievement Award' },
+      tags: ['[2024'],
+      desc: { ms: 'Anugerah ini telah diberikan sempena penyertaan Kem Daie Pena Muda Kementerian Pendidikan Malaysia Peringkat Kebangsaan.',
+		      en: 'This award was given in correlation to participation in Kem Daie Pena Muda Kementerian Pendidikan Malaysia Peringkat Kebangsaan.' },
+      highlights: { ms: ['Awarded by PPD Batu Pahat'], en: ['Awarded by PPD Batu Pahat'] },
+      certs: ['[Sijil 1]']
+    },
+    ach4: {
+      category: { ms: 'Pencapaian', en: 'Achievement' },
+      title: { ms: 'Penulis Terpilih Antologi Syair Pelajar ASEAN (Kebangsaan)', en: 'Selected Writer for the ASEAN Student Syair Anthology (National)' },
+      tags: ['2023'],
+      desc: { ms: 'Sekumpulan pelajar dari Malaysia, Indonesia, Brunei dan Singapura telah dipilih untuk mencipta syair bagi menghasilkan sebuah antologi.',
+			  en: 'A group of students from Malaysia, Indonesia, Brunei dan Singapore was selected to create their own syair to produce an anthology.' },
+      highlights: { ms: ['Memartabatkan Bahasa Melayu', 'Melatih kemahiran bahasa'],
+					en: ['Preserve and Upholds Bahasa Melayu', 'Develop language skills'] },
+      certs: ['[Sijil 1]', '[Sijil 2]']
+    },
+    ach5: {
+      category: { ms: 'Pencapaian', en: 'Achievement' },
+      title: { ms: 'Anugerah Resensi Karya Emas (Kebangsaan)', en: 'Resensi Karya Emas Award (Nationals)' },
+      tags: ['2023'],
+      desc: { ms: 'Semasa Kem Daie Pena Muda Kementerian Pendidikan Malaysia Peringkat Kebangsaan berlansung, 10 orang dari 160 peserta telah dipilih untuk menerima anugerah ini.',
+			  en: 'During Kem Daie Pena Muda Kementerian Pendidikan Malaysia Peringkat Kebangsaan was held, 10 people out of 160 participants was chosen to recieve this award.' },
+      highlights: { ms: ['Kemampuan menyampaikan idea dengan jelas', 'Berani bercakap di khalayak ramai'],
+					en: ['Ability to potray ideas clearly', 'Ability to do public speaking'] },
+      certs: ['[Sijil 1]', '[Sijil 2]']
+    }
+  };
+
+  // ── MODAL HELPERS ──
+  function renderPhotoSlots(items, type) {
+    const lang = localStorage.getItem('lang') || 'ms';
+    const label = type === 'cert' ? (lang === 'en' ? 'Certificate slot' : 'Ruang sijil') : (lang === 'en' ? 'Photo slot' : 'Ruang gambar');
+    return items.map((item, i) => `
+      <button class="story-photo-slot${type === 'cert' ? ' certificate-slot' : ''}" onclick="event.stopPropagation()" type="button" aria-label="${item}">
+        <span>${label} 0${i + 1}</span>
+        <strong>${item}</strong>
+        <small>${lang === 'en' ? 'Replace with your image URL' : 'Tukar dengan URL gambar anda'}</small>
+      </button>`).join('');
+  }
+
+  function openInfoModal(key) {
+    const story = infoStories[key]; if (!story) return;
+    const lang = localStorage.getItem('lang') || 'ms';
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-body story-modal">
+        <div class="modal-category">${story.category[lang]}</div>
+        <div class="modal-title" id="modalTitle">${story.title[lang]}</div>
+        <div class="modal-tags">${story.tags.map(t => `<span class="modal-tag">${t}</span>`).join('')}</div>
+        <div class="modal-desc">${story.desc[lang]}</div>
+        <div class="story-block-title">${lang === 'en' ? 'What this shows' : 'Apa yang bahagian ini tunjuk'}</div>
+        <ul class="story-list">${story.highlights[lang].map(item => `<li>${item}</li>`).join('')}</ul>
+        <div class="modal-gallery-label">${lang === 'en' ? 'Photo slots' : 'Ruang gambar'}</div>
+        <div class="story-photo-grid">${renderPhotoSlots(story.photos, 'photo')}</div>
+      </div>`;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openSkillModal(key) {
+    const skill = skillStories[key]; if (!skill) return;
+    const lang = localStorage.getItem('lang') || 'ms';
+    const iconHtml = skill.icon ? `<img class="skill-modal-logo" src="${skill.icon}" alt="${skill.title}" onerror="this.style.display='none'">` : `<div class="skill-modal-fallback">${skill.title.slice(0,2)}</div>`;
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-body skill-modal">
+        <div class="skill-modal-head">
+          <div class="skill-modal-icon">${iconHtml}</div>
+          <div><div class="modal-category">${skill.category}</div><div class="modal-title" id="modalTitle">${skill.title}</div></div>
+        </div>
+        <div class="modal-tags">${skill.tags.map(t => `<span class="modal-tag">${t}</span>`).join('')}</div>
+        <div class="modal-desc">${skill.desc[lang]}</div>
+        <div class="story-block-title">${lang === 'en' ? 'Used for' : 'Digunakan untuk'}</div>
+        <ul class="story-list">${skill.uses[lang].map(item => `<li>${item}</li>`).join('')}</ul>
+      </div>`;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openEducationModal(key) {
+    const story = educationStories[key]; if (!story) return;
+    const lang = localStorage.getItem('lang') || 'ms';
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-body story-modal">
+        <div class="modal-category">${story.category[lang]}</div>
+        <div class="modal-title" id="modalTitle">${story.title}</div>
+        <div class="modal-tags">${story.tags.map(t => `<span class="modal-tag">${t}</span>`).join('')}</div>
+        <div class="modal-desc">${story.desc[lang]}</div>
+        <div class="story-block-title">${lang === 'en' ? 'Story highlights' : 'Inti cerita'}</div>
+        <ul class="story-list">${story.highlights[lang].map(item => `<li>${item}</li>`).join('')}</ul>
+        <div class="modal-gallery-label">${lang === 'en' ? 'Photos' : 'Gambar'}</div>
+        <div class="story-photo-grid">${renderPhotoSlots(story.photos, 'photo')}</div>
+      </div>`;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openAchievementModal(key) {
+    const story = achievementStories[key]; if (!story) return;
+    const lang = localStorage.getItem('lang') || 'ms';
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-body story-modal">
+        <div class="modal-category">${story.category[lang]}</div>
+        <div class="modal-title" id="modalTitle">${story.title[lang]}</div>
+        <div class="modal-tags">${story.tags.map(t => `<span class="modal-tag">${t}</span>`).join('')}</div>
+        <div class="modal-desc">${story.desc[lang]}</div>
+        <div class="story-block-title">${lang === 'en' ? 'Why it matters' : 'Kenapa ia bermakna'}</div>
+        <ul class="story-list">${story.highlights[lang].map(item => `<li>${item}</li>`).join('')}</ul>
+        <div class="modal-gallery-label">${lang === 'en' ? 'Certificates / proof' : 'Sijil / bukti'}</div>
+        <div class="story-photo-grid">${renderPhotoSlots(story.certs, 'cert')}</div>
+      </div>`;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function handleInfoCardKey(e, key) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openInfoModal(key); } }
+  function handleStoryCardKey(e, type, key) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); type === 'achievement' ? openAchievementModal(key) : openEducationModal(key); }
+  }
+
+  // ── CERTIFICATES ──
+  async function loadCerts() {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/certificates?select=*&order=created_at.desc`, {
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+      });
+      allCerts = await res.json();
+      renderCerts();
+    } catch { document.getElementById('certGallery').innerHTML = '<div style="grid-column:1/-1;color:var(--muted);padding:20px;">Gagal memuatkan sijil.</div>'; }
+  }
+
+  function renderCerts() {
+    const gallery = document.getElementById('certGallery');
+    const certs = activeCertFilter === 'all' ? allCerts : allCerts.filter(c => parseCertMeta(c.name).category === activeCertFilter);
+    if (!certs.length) { gallery.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">Tiada sijil dijumpai.</div>'; return; }
+    gallery.innerHTML = certs.map(c => {
+      const meta = parseCertMeta(c.name);
+      return `<div class="cert-gallery-item" onclick="openLightbox('${c.image_url}')"><img class="cert-gallery-img" src="${c.image_url}" alt="${meta.name || 'sijil'}" onerror="this.style.display='none'"><div class="cert-gallery-name">${meta.name || 'Sijil'}</div><div class="cert-gallery-cat">${meta.category}</div></div>`;
+    }).join('');
+  }
+
+  function filterCerts(cat, btn) {
+    activeCertFilter = cat;
+    btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderCerts();
+  }
+
+  // ── LIGHTBOX ──
+  function openLightbox(src) { document.getElementById('lightboxImg').src = src; document.getElementById('lightbox').classList.add('open'); }
+  function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+
+  // ── CONTACT FORM ──
+  function showToast(msg, type = 'success') {
+    const t = document.getElementById('siteToast');
+    t.textContent = msg; t.className = `toast show ${type}`;
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  async function submitForm() {
+    const name = document.getElementById('formName').value.trim();
+    const email = document.getElementById('formEmail').value.trim();
+    const message = document.getElementById('formMessage').value.trim();
+    if (!name || !email || !message) { showToast('Sila isi semua ruangan dulu.', 'error'); return; }
+    const btn = document.getElementById('formSubmit');
+    btn.disabled = true; btn.innerHTML = '<span>Menghantar...</span>';
+    // TUKAR URL FORMSPREE DI BAWAH — pergi ke formspree.io dan buat form baru
+    const res = await fetch('[URL FORMSPREE ANDA, cth. https://formspree.io/f/xxxxxxxx]', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, message })
+    });
+    if (res.ok) {
+      document.getElementById('formContainer').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+      showToast('Mesej berjaya dihantar!', 'success');
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = '<span data-en="Send Message ✦" data-ms="Hantar Mesej ✦">Hantar Mesej ✦</span>';
+      showToast('Gagal hantar. Cuba lagi.', 'error');
+    }
+  }
+
+  // ── LANGUAGE ──
+  function toggleLang() {
+    const isEN = document.documentElement.getAttribute('data-lang') === 'en';
+    const newLang = isEN ? 'ms' : 'en';
+    setLang(newLang); localStorage.setItem('lang', newLang);
+    renderCerts();
+  }
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.getElementById('langThumb').classList.toggle('on', lang === 'en');
+    document.querySelectorAll('[data-en]').forEach(el => { el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-ms'); });
+    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+      el.placeholder = lang === 'en' ? el.getAttribute('data-en-placeholder') : el.getAttribute('data-ms-placeholder');
+    });
+  }
+
+  // ── THEME ──
+  function toggleTheme() {
+    const isLight = document.body.classList.toggle('light');
+    document.getElementById('themeBtn').textContent = isLight ? '☀' : '☽';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  }
+
+  // ── MOBILE NAV ──
+  function toggleMobileNav() {
+    const links = document.getElementById('navLinks');
+    const btn = document.querySelector('.nav-menu-btn');
+    const isOpen = links.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
+  }
+  document.querySelectorAll('#navLinks .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+      document.querySelector('.nav-menu-btn')?.classList.remove('open');
+    });
+  });
+
+  function handleToggleKey(event, action) { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action(); } }
+
+  // ── FOOTER ADMIN ──
+  let clickCount = 0, clickTimer;
+  function handleFooterClick() {
+    clickCount++; clearTimeout(clickTimer);
+    clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
+    if (clickCount >= 5) { clickCount = 0; window.location.href = 'admin.html'; }
+  }
+
+  // ── CV LINK ──
+  async function loadCVLink() {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/settings?key=eq.cv_link&select=*`, {
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+      });
+      const data = await res.json();
+      const btn = document.getElementById('cvBtn');
+      if (btn && data.length && data[0].value) {
+        btn.href = data[0].value; btn.style.display = 'inline-block';
+        const resumeBtn = document.getElementById('resumeBtn');
+        if (resumeBtn) { resumeBtn.href = data[0].value; resumeBtn.style.display = 'inline-block'; }
+      }
+    } catch(e) { console.error(e); }
+  }
+
+  // ESC key
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModalDirect(); closeLightbox(); } });
+
+  // ── INIT ──
+  setLang(localStorage.getItem('lang') || 'ms');
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light');
+    document.getElementById('themeBtn').textContent = '☀';
+  }
+  loadCerts();
+  loadCVLink();
+</script>
+</body>
+</html>
